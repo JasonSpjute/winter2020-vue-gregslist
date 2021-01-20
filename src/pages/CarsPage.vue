@@ -80,7 +80,9 @@
               aria-describedby="helpId"
             />
           </div>
-          <button type="submit" class="btn btn-success">Add Car</button>
+          <button type="submit" class="btn btn-success">
+            Add Car
+          </button>
         </form>
       </div>
     </div>
@@ -110,6 +112,7 @@ export default {
       try {
         carsService.getCars()
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error)
       }
     })
@@ -125,6 +128,7 @@ export default {
           // change route in javascript using router.push()
           router.push({ name: 'CarDetails', params: { id } })
         } catch (error) {
+          // eslint-disable-next-line no-console
           console.error(error)
         }
       }
