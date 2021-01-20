@@ -1,9 +1,16 @@
 <template>
-  <div class="car-details">
+  <div class="car-details" v-if="state.loaded">
     <h1>Welcome to car details</h1>
-    <img v-if="state.loaded" :src="car.imgUrl" alt="" />
-    <h1 v-else>Loading...</h1>
+    <img :src="car.imgUrl" alt="" />
+    <h1>${{ car.price }}</h1>
+    <h2>{{ car.make }} | {{ car.model }}</h2>
+    <h3>{{ car.year }}</h3>
+    <p>{{ car.description }}</p>
   </div>
+  <h1 v-else>
+    Loading...
+    h1> -->
+  </h1>
 </template>
 
 <script>
@@ -21,7 +28,7 @@ export default {
     // onBeforeRouteLeave(() => {
     //   AppState.activeCar = {}
     // })
-    onMounted(async () => {
+    onMounted(async() => {
       try {
         await carsService.getOne(route.params.id)
       } catch (error) {
